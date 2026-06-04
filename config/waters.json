@@ -1,0 +1,203 @@
+{
+  "_comment": "Master list of fishing spots within roughly a 2-hour drive of the cabin near Twain Harte, CA. Coordinates and drive times are approximate starting points - adjust to taste. 'cdfw_match' is a list of substrings used to match this water against names in the CDFW fish planting schedule (case-insensitive).",
+  "waters": [
+    {
+      "id": "pinecrest_lake",
+      "name": "Pinecrest Lake",
+      "type": "trout_lake_108",
+      "lat": 38.1916,
+      "lon": -119.9849,
+      "county": "Tuolumne",
+      "drive_minutes": 34,
+      "cdfw_match": ["Pinecrest"],
+      "notes": ""
+    },
+    {
+      "id": "lyons_reservoir",
+      "name": "Lyons Reservoir",
+      "type": "trout_lake_108",
+      "lat": 38.0686,
+      "lon": -120.0966,
+      "county": "Tuolumne",
+      "drive_minutes": 14,
+      "cdfw_match": ["Lyons"],
+      "notes": "Shore only - no boats"
+    },
+    {
+      "id": "beardsley_reservoir",
+      "name": "Beardsley Reservoir",
+      "type": "trout_lake_108",
+      "lat": 38.2122,
+      "lon": -120.0930,
+      "county": "Tuolumne",
+      "drive_minutes": 40,
+      "cdfw_match": ["Beardsley"],
+      "notes": ""
+    },
+    {
+      "id": "donnells_reservoir",
+      "name": "Donnells Reservoir",
+      "type": "trout_lake_108",
+      "lat": 38.3389,
+      "lon": -119.9569,
+      "county": "Tuolumne",
+      "drive_minutes": 50,
+      "cdfw_match": ["Donnells", "Donnell"],
+      "notes": "Limited access"
+    },
+    {
+      "id": "phoenix_lake",
+      "name": "Phoenix Lake",
+      "type": "trout_lake_108",
+      "lat": 37.9836,
+      "lon": -120.2730,
+      "county": "Tuolumne",
+      "drive_minutes": 22,
+      "cdfw_match": ["Phoenix"],
+      "notes": ""
+    },
+    {
+      "id": "new_melones",
+      "name": "New Melones Lake",
+      "type": "valley_reservoir",
+      "lat": 37.9477,
+      "lon": -120.5274,
+      "county": "Calaveras",
+      "drive_minutes": 42,
+      "cdfw_match": ["New Melones", "Melones"],
+      "notes": "Trout, bass, crappie, catfish"
+    },
+    {
+      "id": "tulloch_reservoir",
+      "name": "Tulloch Reservoir",
+      "type": "valley_reservoir",
+      "lat": 37.8722,
+      "lon": -120.6027,
+      "county": "Calaveras",
+      "drive_minutes": 45,
+      "cdfw_match": ["Tulloch"],
+      "notes": ""
+    },
+    {
+      "id": "lake_don_pedro",
+      "name": "Lake Don Pedro",
+      "type": "valley_reservoir",
+      "lat": 37.6997,
+      "lon": -120.4202,
+      "county": "Tuolumne",
+      "drive_minutes": 50,
+      "cdfw_match": ["Don Pedro"],
+      "notes": ""
+    },
+    {
+      "id": "new_hogan",
+      "name": "New Hogan Lake",
+      "type": "valley_reservoir",
+      "lat": 38.1535,
+      "lon": -120.8127,
+      "county": "Calaveras",
+      "drive_minutes": 65,
+      "cdfw_match": ["New Hogan", "Hogan"],
+      "notes": ""
+    },
+    {
+      "id": "modesto_reservoir",
+      "name": "Modesto Reservoir",
+      "type": "valley_reservoir",
+      "lat": 37.6480,
+      "lon": -120.6280,
+      "county": "Stanislaus",
+      "drive_minutes": 70,
+      "cdfw_match": ["Modesto"],
+      "notes": ""
+    },
+    {
+      "id": "woodward_reservoir",
+      "name": "Woodward Reservoir",
+      "type": "valley_reservoir",
+      "lat": 37.8616,
+      "lon": -120.8866,
+      "county": "Stanislaus",
+      "drive_minutes": 75,
+      "cdfw_match": ["Woodward"],
+      "notes": ""
+    },
+    {
+      "id": "lake_alpine",
+      "name": "Lake Alpine",
+      "type": "alpine_lake",
+      "lat": 38.4769,
+      "lon": -120.0030,
+      "county": "Alpine",
+      "drive_minutes": 85,
+      "cdfw_match": ["Alpine, Lake", "Lake Alpine"],
+      "notes": "Seasonal - access opens late spring"
+    },
+    {
+      "id": "spicer_meadow",
+      "name": "Spicer Meadow Reservoir",
+      "type": "alpine_lake",
+      "lat": 38.3897,
+      "lon": -119.9847,
+      "county": "Alpine",
+      "drive_minutes": 100,
+      "cdfw_match": ["Spicer"],
+      "notes": "Seasonal - limited stocking"
+    },
+    {
+      "id": "union_reservoir",
+      "name": "Union Reservoir",
+      "type": "alpine_lake",
+      "lat": 38.4583,
+      "lon": -119.9417,
+      "county": "Alpine",
+      "drive_minutes": 95,
+      "cdfw_match": ["Union Res"],
+      "notes": "Seasonal"
+    },
+    {
+      "id": "utica_reservoir",
+      "name": "Utica Reservoir",
+      "type": "alpine_lake",
+      "lat": 38.4520,
+      "lon": -119.9490,
+      "county": "Alpine",
+      "drive_minutes": 95,
+      "cdfw_match": ["Utica"],
+      "notes": "Seasonal"
+    },
+    {
+      "id": "mf_stanislaus",
+      "name": "Middle Fork Stanislaus River",
+      "type": "river",
+      "lat": 38.2000,
+      "lon": -120.0000,
+      "county": "Tuolumne",
+      "drive_minutes": 25,
+      "cdfw_match": ["Stanislaus River, Middle", "Middle Fork Stanislaus"],
+      "notes": "Stocked along the Hwy 108 corridor"
+    },
+    {
+      "id": "sf_stanislaus",
+      "name": "South Fork Stanislaus River",
+      "type": "river",
+      "lat": 38.0500,
+      "lon": -120.1000,
+      "county": "Tuolumne",
+      "drive_minutes": 20,
+      "cdfw_match": ["Stanislaus River, South", "South Fork Stanislaus"],
+      "notes": ""
+    },
+    {
+      "id": "tuolumne_river",
+      "name": "Tuolumne River",
+      "type": "river",
+      "lat": 37.8000,
+      "lon": -120.2000,
+      "county": "Tuolumne",
+      "drive_minutes": 35,
+      "cdfw_match": ["Tuolumne River"],
+      "notes": "Wild trout in places"
+    }
+  ]
+}

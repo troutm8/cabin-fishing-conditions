@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Local cache output (regenerated at runtime)
+data/*.json
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
