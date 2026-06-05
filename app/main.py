@@ -79,13 +79,12 @@ def match_stocking(water, plants):
 
 def build_conditions():
     waters = load_waters()
-    counties = [w["county"] for w in waters]
 
     weather_by_id = cache.get_or_refresh(
         "weather", WEATHER_TTL, lambda: weather.fetch_all(waters), default={}
     )
     plants = cache.get_or_refresh(
-        "stocking", STOCKING_TTL, lambda: stocking.fetch_recent_plants(counties), default=[]
+        "stocking", STOCKING_TTL, lambda: stocking.fetch_recent_plants(), default=[]
     )
     crowd_by_id = crowd.fetch_all(waters)
 
@@ -102,6 +101,8 @@ def build_conditions():
             "waters": [{
                 "id": w["id"],
                 "name": w["name"],
+                "lat": w["lat"],
+                "lon": w["lon"],
                 "drive_minutes": w["drive_minutes"],
                 "notes": w["notes"],
                 "weather": weather_by_id.get(w["id"]),

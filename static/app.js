@@ -85,7 +85,17 @@ function card(water) {
   if (water.notes) meta.push(water.notes);
   left.appendChild(el("p", "card-meta", meta.join(" &middot; ")));
   head.appendChild(left);
-  head.appendChild(el("i", "ti ti-map-pin"));
+
+  const mapsUrl =
+    `https://www.google.com/maps/search/?api=1&query=${water.lat},${water.lon}`;
+  const link = el("a", "map-link");
+  link.href = mapsUrl;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.title = `Open ${water.name} in Google Maps`;
+  link.setAttribute("aria-label", `Open ${water.name} in Google Maps`);
+  link.appendChild(el("i", "ti ti-map-pin"));
+  head.appendChild(link);
   c.appendChild(head);
 
   c.appendChild(weatherBlock(water.weather));

@@ -20,7 +20,7 @@
       "lon": -120.0966,
       "county": "Tuolumne",
       "drive_minutes": 14,
-      "cdfw_match": ["Lyons"],
+      "cdfw_match": ["Lyons Reservoir"],
       "notes": "Shore only - no boats"
     },
     {
@@ -119,7 +119,7 @@
       "lon": -120.8866,
       "county": "Stanislaus",
       "drive_minutes": 75,
-      "cdfw_match": ["Woodward"],
+      "cdfw_match": ["Woodward Reservoir"],
       "notes": ""
     },
     {
@@ -174,7 +174,7 @@
       "lon": -120.0000,
       "county": "Tuolumne",
       "drive_minutes": 25,
-      "cdfw_match": ["Stanislaus River, Middle", "Middle Fork Stanislaus"],
+      "cdfw_match": ["Stanislaus River Middle"],
       "notes": "Stocked along the Hwy 108 corridor"
     },
     {
@@ -185,7 +185,7 @@
       "lon": -120.1000,
       "county": "Tuolumne",
       "drive_minutes": 20,
-      "cdfw_match": ["Stanislaus River, South", "South Fork Stanislaus"],
+      "cdfw_match": ["Stanislaus River South"],
       "notes": ""
     },
     {

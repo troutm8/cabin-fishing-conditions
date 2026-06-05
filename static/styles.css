@@ -89,6 +89,17 @@ body {
 .card-meta { font-size: 0.8125rem; color: var(--muted); margin: 2px 0 0; }
 .card-head > i { font-size: 1.125rem; color: var(--hint); }
 
+.map-link {
+  color: var(--hint);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.map-link i { font-size: 1.125rem; }
+.map-link:hover,
+.map-link:focus-visible { color: #2f80ed; }
+
 .label {
   font-size: 0.75rem;
   color: var(--hint);
