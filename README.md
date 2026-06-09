@@ -61,14 +61,28 @@ file in `data/` to force that source to refetch on the next load.
 
 ## Things to verify / known rough edges
 
-- **CDFW stocking scraper** (`app/sources/stocking.py`) is the piece most likely
-  to need tuning. The schedule is an ASP.NET page, not a clean API, so the
-  query parameters and county filter are marked with `TODO` and should be
-  confirmed against the live page. Until that's dialed in, cards simply show
-  "No recent stocking data" rather than erroring.
+- **CDFW stocking scraper** (`app/sources/stocking.py`) — verified against the
+  live page on 2026-06-09. The single-GET query
+  (`Params.PlantTimeFrame=1`) returned the full schedule (~2,100 rows), every
+  row parsed with a valid date, and every `cdfw_match` needle in
+  `waters.json` matched only its own water in the correct county. Six waters
+  (Beardsley, Donnells, Phoenix Lake, New Hogan, Spicer, Utica) showed
+  "No recent stocking data" because CDFW genuinely hadn't stocked them in the
+  past year — not a scraper bug. Regression tests against captured live
+  markup live in `tests/`; if CDFW changes the page layout they'll catch it.
 - **Coordinates and drive times** in `waters.json` are approximate starting
   points.
 - **Crowd reports** are a stub by design for v1.
+
+## Tests
+
+```bash
+pip install pytest
+python -m pytest tests/
+```
+
+The stocking tests run against `tests/fixtures/cdfw_sample.html`, real markup
+captured from the CDFW schedule page, so they pass offline.
 
 ## Roadmap ideas (later)
 
