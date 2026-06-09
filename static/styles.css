@@ -134,6 +134,12 @@ body {
 .placeholder i { font-size: 1rem; color: var(--hint); }
 .placeholder span { font-size: 0.75rem; color: var(--hint); }
 
+.crowd-line { font-size: 0.8125rem; margin: 0 0 2px; }
+.crowd-line a { color: inherit; }
+.crowd-line a:hover,
+.crowd-line a:focus-visible { color: #2f80ed; }
+.crowd-sub { font-size: 0.8125rem; color: var(--muted); margin: 0; }
+
 .unavailable { font-size: 0.8125rem; color: var(--hint); margin: 0 0 14px; }
 
 .error {

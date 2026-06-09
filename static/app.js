@@ -7,9 +7,13 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
 
 function fmtDate(iso) {
   // "2026-05-20" -> "May 20"; pass anything else through unchanged.
+  // Reports on quiet waters can be years old, so show the year when
+  // it isn't the current one.
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
   if (!m) return iso || "";
-  return `${MONTHS[parseInt(m[2], 10) - 1]} ${parseInt(m[3], 10)}`;
+  const base = `${MONTHS[parseInt(m[2], 10) - 1]} ${parseInt(m[3], 10)}`;
+  const year = parseInt(m[1], 10);
+  return year === new Date().getFullYear() ? base : `${base}, ${year}`;
 }
 
 function fmtUpdated(iso, ageMinutes) {
@@ -66,12 +70,25 @@ function stockingBlock(s) {
 
 function crowdBlock(c) {
   const wrap = el("div");
-  wrap.appendChild(el("p", "label", "Crowd reports"));
-  const box = el("div", "placeholder");
-  box.innerHTML =
-    `<i class="ti ti-users" aria-hidden="true"></i>` +
-    `<span>${(c && c.message) || "Sources coming soon"}</span>`;
-  wrap.appendChild(box);
+  wrap.appendChild(el("p", "label", "Latest fish report"));
+  if (!c || c.status !== "report") {
+    const box = el("div", "placeholder");
+    box.innerHTML =
+      `<i class="ti ti-users" aria-hidden="true"></i>` +
+      `<span>No reports for this water</span>`;
+    wrap.appendChild(box);
+    return wrap;
+  }
+  const line = el("p", "crowd-line");
+  const link = el("a");
+  link.href = c.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = c.title;
+  line.appendChild(link);
+  wrap.appendChild(line);
+  wrap.appendChild(el("p", "crowd-sub",
+    `${fmtDate(c.date)} &middot; ${c.author || "NorCal Fish Reports"}`));
   return wrap;
 }
 

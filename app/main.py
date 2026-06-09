@@ -6,7 +6,7 @@ Serves two things:
   GET /api/conditions  -> combined JSON the page renders
 
 The combined endpoint pulls three sources through the cache layer
-(weather + stocking + crowd placeholder), matches stocking records to waters,
+(weather + stocking + crowd reports), matches stocking records to waters,
 and groups everything by water type. Refreshing the page is cheap because the
 cache only calls upstream when a source's TTL has expired.
 
@@ -32,6 +32,7 @@ CONFIG_PATH = os.path.join(BASE_DIR, "config", "waters.json")
 # How long each source's cache stays fresh, in seconds.
 WEATHER_TTL = 3 * 60 * 60      # 3 hours
 STOCKING_TTL = 24 * 60 * 60    # 1 day
+CROWD_TTL = 6 * 60 * 60        # 6 hours
 
 # Display order, labels, and icons for the water-type groups.
 GROUPS = [
@@ -86,7 +87,9 @@ def build_conditions():
     plants = cache.get_or_refresh(
         "stocking", STOCKING_TTL, lambda: stocking.fetch_recent_plants(), default=[]
     )
-    crowd_by_id = crowd.fetch_all(waters)
+    crowd_by_id = cache.get_or_refresh(
+        "crowd", CROWD_TTL, lambda: crowd.fetch_all(waters), default={}
+    )
 
     groups = []
     for group in GROUPS:
