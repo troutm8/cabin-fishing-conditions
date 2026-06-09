@@ -13,6 +13,10 @@ Headers on the live page: "Week of Plant" | "Water Name" | "Counties" | "Species
 Dates are weekly ranges like "6/8/2025-6/14/2025"; we keep the start of the
 range and normalize to YYYY-MM-DD.
 
+Verified against the live page on 2026-06-09: the GET below returned ~2,100
+rows in a single table, all dates parsed, and the headers matched the names
+_parse_table looks for. Regression tests with captured markup: tests/.
+
 Returned records:
   {"county": "Tuolumne", "water": "Pinecrest Lake",
    "date": "2025-06-08", "species": "Trout"}
