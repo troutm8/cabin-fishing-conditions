@@ -4,8 +4,8 @@ A small personal dashboard that shows fishing conditions for the spots within a
 2-hour drive of Koda's Place (the cabin near Twain Harte, CA).
 
 It's a read-only page: one card per water, grouped by water type, showing
-**weather** (top priority), **stocking** (CDFW fish plants), and a
-**crowd-reports** placeholder for now. A thin FastAPI backend pulls and caches
+**weather** (top priority), **stocking** (CDFW fish plants), and the
+**latest fish report** for the water. A thin FastAPI backend pulls and caches
 the data so the page stays fast and the upstream APIs don't get throttled.
 
 ## What it shows
@@ -14,7 +14,10 @@ the data so the page stays fast and the upstream APIs don't get throttled.
   (via [Open-Meteo](https://open-meteo.com), free, no API key).
 - **Stocking** - most recent and next CDFW trout/catfish plant for each water
   (scraped from the CDFW Fish Planting Schedule).
-- **Crowd reports** - placeholder slot for v1; wire a real source in later.
+- **Fish reports** - the latest report for each water from
+  [NorCal Fish Reports](https://www.norcalfishreports.com), with date, author
+  (local shops/agencies like Ebbetts Pass Sporting Goods and the Don Pedro
+  Recreation Agency), and a link to the full report.
 
 Spots are grouped into Highway 108 trout lakes, valley reservoirs, alpine
 lakes, and rivers, and sorted by drive time within each group.
@@ -40,7 +43,7 @@ app/main.py             FastAPI app: serves the page + /api/conditions
 app/cache.py            File cache with per-source TTL
 app/sources/weather.py  Open-Meteo weather
 app/sources/stocking.py CDFW plant-schedule scraper
-app/sources/crowd.py    Crowd-reports placeholder
+app/sources/crowd.py    NorCal Fish Reports scraper (latest report per water)
 static/                 The dashboard page (index.html, styles.css, app.js)
 data/                   Cache files written at runtime (git-ignored)
 ```
@@ -50,14 +53,20 @@ data/                   Cache files written at runtime (git-ignored)
 Edit `config/waters.json`. Each entry needs a `lat`/`lon` (for weather), a
 `county` (for the stocking lookup), a `type` (which group it falls under), an
 approximate `drive_minutes`, and `cdfw_match` - a list of substrings used to
-match the water against names in the CDFW schedule. Coordinates and drive times
-in the starter file are approximate; adjust them to taste.
+match the water against names in the CDFW schedule. Optionally add
+`ncfr_path`, the water's page path on
+[norcalfishreports.com](https://www.norcalfishreports.com) (e.g.
+`/lakes/22/don-pedro-reservoir.php`, find it via their Spots index) to get
+fish reports; waters without one show "No reports for this water".
+Coordinates and drive times in the starter file are approximate; adjust them
+to taste.
 
 ## Caching
 
 The cache decouples page refreshes from upstream calls. Defaults (in
-`app/main.py`): weather refreshes every 3 hours, stocking once a day. Delete a
-file in `data/` to force that source to refetch on the next load.
+`app/main.py`): weather refreshes every 3 hours, stocking once a day, fish
+reports every 6 hours. Delete a file in `data/` to force that source to
+refetch on the next load.
 
 ## Things to verify / known rough edges
 
@@ -72,7 +81,13 @@ file in `data/` to force that source to refetch on the next load.
   markup live in `tests/`; if CDFW changes the page layout they'll catch it.
 - **Coordinates and drive times** in `waters.json` are approximate starting
   points.
-- **Crowd reports** are a stub by design for v1.
+- **Fish reports** (`app/sources/crowd.py`) come from norcalfishreports.com
+  per-water pages (robots.txt allows crawling; verified 2026-06-09). Coverage
+  is real but uneven: busy waters (Don Pedro, Lake Alpine, Spicer) get fresh
+  reports, quiet ones can go years between reports - the card shows the
+  report date (with year when it's old) so stale news reads as stale. Six
+  waters have no page on the site at all (Lyons, Beardsley, Donnells,
+  Phoenix, Utica, SF Stanislaus) and show "No reports for this water".
 
 ## Tests
 
@@ -81,11 +96,11 @@ pip install pytest
 python -m pytest tests/
 ```
 
-The stocking tests run against `tests/fixtures/cdfw_sample.html`, real markup
-captured from the CDFW schedule page, so they pass offline.
+The scraper tests run against fixtures in `tests/fixtures/` - real markup
+captured from the CDFW schedule and norcalfishreports.com pages - so they
+pass offline.
 
 ## Roadmap ideas (later)
 
-- Wire a real crowd-reports source (local shop page or forum feed).
 - Add live water conditions (USGS streamflow/temp, reservoir levels).
 - Host it on a real server instead of running locally.

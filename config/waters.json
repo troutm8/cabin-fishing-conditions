@@ -1,5 +1,5 @@
 {
-  "_comment": "Master list of fishing spots within roughly a 2-hour drive of the cabin near Twain Harte, CA. Coordinates and drive times are approximate starting points - adjust to taste. 'cdfw_match' is a list of substrings used to match this water against names in the CDFW fish planting schedule (case-insensitive).",
+  "_comment": "Master list of fishing spots within roughly a 2-hour drive of the cabin near Twain Harte, CA. Coordinates and drive times are approximate starting points - adjust to taste. 'cdfw_match' is a list of substrings used to match this water against names in the CDFW fish planting schedule (case-insensitive). 'ncfr_path' is the water's page on www.norcalfishreports.com (fish reports); omit it for waters the site doesn't cover.",
   "waters": [
     {
       "id": "pinecrest_lake",
@@ -10,6 +10,7 @@
       "county": "Tuolumne",
       "drive_minutes": 34,
       "cdfw_match": ["Pinecrest"],
+      "ncfr_path": "/lakes/468/pinecrest-lake.php",
       "notes": ""
     },
     {
@@ -65,6 +66,7 @@
       "county": "Calaveras",
       "drive_minutes": 42,
       "cdfw_match": ["New Melones", "Melones"],
+      "ncfr_path": "/lakes/21/new-melones-reservoir.php",
       "notes": "Trout, bass, crappie, catfish"
     },
     {
@@ -76,6 +78,7 @@
       "county": "Calaveras",
       "drive_minutes": 45,
       "cdfw_match": ["Tulloch"],
+      "ncfr_path": "/lakes/194/tulloch-reservoir.php",
       "notes": ""
     },
     {
@@ -87,6 +90,7 @@
       "county": "Tuolumne",
       "drive_minutes": 50,
       "cdfw_match": ["Don Pedro"],
+      "ncfr_path": "/lakes/22/don-pedro-reservoir.php",
       "notes": ""
     },
     {
@@ -98,6 +102,7 @@
       "county": "Calaveras",
       "drive_minutes": 65,
       "cdfw_match": ["New Hogan", "Hogan"],
+      "ncfr_path": "/lakes/119/new-hogan-reservoir.php",
       "notes": ""
     },
     {
@@ -109,6 +114,7 @@
       "county": "Stanislaus",
       "drive_minutes": 70,
       "cdfw_match": ["Modesto"],
+      "ncfr_path": "/lakes/1068/modesto-reservoir.php",
       "notes": ""
     },
     {
@@ -120,6 +126,7 @@
       "county": "Stanislaus",
       "drive_minutes": 75,
       "cdfw_match": ["Woodward Reservoir"],
+      "ncfr_path": "/lakes/1662/woodward-reservoir.php",
       "notes": ""
     },
     {
@@ -131,6 +138,7 @@
       "county": "Alpine",
       "drive_minutes": 85,
       "cdfw_match": ["Alpine, Lake", "Lake Alpine"],
+      "ncfr_path": "/lakes/676/lake-alpine.php",
       "notes": "Seasonal - access opens late spring"
     },
     {
@@ -142,6 +150,7 @@
       "county": "Alpine",
       "drive_minutes": 100,
       "cdfw_match": ["Spicer"],
+      "ncfr_path": "/lakes/1070/spicer-meadow-reservoir.php",
       "notes": "Seasonal - limited stocking"
     },
     {
@@ -153,6 +162,7 @@
       "county": "Alpine",
       "drive_minutes": 95,
       "cdfw_match": ["Union Res"],
+      "ncfr_path": "/lakes/1218/union-reservoir.php",
       "notes": "Seasonal"
     },
     {
@@ -175,6 +185,7 @@
       "county": "Tuolumne",
       "drive_minutes": 25,
       "cdfw_match": ["Stanislaus River Middle"],
+      "ncfr_path": "/rivers/1770/stanislaus-river---middle-fork.php",
       "notes": "Stocked along the Hwy 108 corridor"
     },
     {
@@ -197,6 +208,7 @@
       "county": "Tuolumne",
       "drive_minutes": 35,
       "cdfw_match": ["Tuolumne River"],
+      "ncfr_path": "/rivers/467/tuolumne-river.php",
       "notes": "Wild trout in places"
     }
   ]
